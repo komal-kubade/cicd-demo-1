@@ -5,24 +5,24 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Fixing npm version for Node 18
-      - npm install -g npm@9
-      - echo Installing serverless
-      - npm install -g serverless
-      - echo Installing required build tools
+      - echo "Installing global tools if not already present"
+      - npm install -g npm@9 || echo "npm already installed"
+      - npm install -g serverless || echo "serverless already installed"
+      - echo "Installing required build tools"
       - yum install -y gcc gcc-c++ make python3
-      - echo Installing API dependencies
-      - rm -rf node_modules package-lock.json
-      - npm install --legacy-peer-deps
-      - echo Finished installing API dependencies
+      - echo "Entering backend directory"
+      - cd backend
+      - echo "Installing project dependencies"
+      - if [ ! -d "node_modules" ]; then npm install --legacy-peer-deps; fi
+      - echo "Finished installing dependencies"
 
   build:
     commands:
-      - echo Deploying API
+      - echo "Deploying API"
       - cd backend
       - serverless deploy
-      - echo Finished deploying API
+      - echo "Finished deploying API"
 
 cache:
   paths:
-    - "node_modules/**/*"
+    - "backend/node_modules/**/*"
