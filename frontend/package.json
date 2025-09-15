@@ -5,20 +5,17 @@
   "dependencies": {
     "@babel/runtime": "^7.6.0",
     "axios": "^0.19.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy-dev": "aws s3 sync ./build/ s3://amplify-madrid-dev-72581-deployment  --region us-east-1",
+    "deploy-dev": "aws s3 sync ./build/ s3://amplify-madrid-dev-72581-deployment --region us-east-1",
     "cache-bust-dev": "aws cloudfront create-invalidation --distribution-id E3P1O8LT5C3TE9 --paths '/'",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

@@ -7,7 +7,6 @@ phases:
     commands:
       - echo Installing Web dependencies
       - cd frontend
-      # Clean install to avoid eslint conflicts
       - rm -rf node_modules package-lock.json
       - npm install --silent
       - echo Finished installing Web dependencies
@@ -15,7 +14,7 @@ phases:
   build:
     commands:
       - echo Running Unit Tests
-      - npm run test
+      - npm run test -- --watchAll=false
       - echo Building artifacts
       - npm run build
       - echo Deploying artifacts
@@ -28,7 +27,7 @@ cache:
     - "frontend/node_modules/**/*"
 
 artifacts:
-  base-directory: frontend/build
   files:
     - "**/*"
+  base-directory: "frontend/build"
   discard-paths: no
