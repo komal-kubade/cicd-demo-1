@@ -7,12 +7,12 @@ phases:
     commands:
       - echo "Installing global tools if not already present"
       - npm install -g npm@9 || echo "npm already installed"
-      - npm install -g serverless || echo "serverless already installed"
+      - npm install -g serverless@3 || echo "serverless v3 already installed"
       - echo "Installing required build tools"
       - yum install -y gcc gcc-c++ make python3
       - echo "Installing frontend dependencies"
       - cd frontend
-      - npm install --legacy-peer-deps
+      - if [ ! -d "node_modules" ]; then npm install --legacy-peer-deps; fi
       - echo "Finished installing frontend dependencies"
 
   build:
