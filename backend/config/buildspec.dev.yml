@@ -3,15 +3,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 22
+      nodejs: 18  
     commands:
       - echo Installing serverless
       - npm install -g serverless
       - echo Installing todo API dependencies
       - cd backend
-      # clean up lock + modules to avoid version conflicts
       - rm -rf node_modules package-lock.json
-      # install with legacy-peer-deps for compatibility with Node 22
       - npm install --legacy-peer-deps --silent
       - echo Finished installing todo API dependencies
   build:
@@ -23,3 +21,4 @@ phases:
 cache:
   paths:
     - "backend/node_modules/**/*"
+
