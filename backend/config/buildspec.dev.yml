@@ -11,19 +11,18 @@ phases:
       - npm install -g serverless
       - echo Installing required build tools
       - yum install -y gcc gcc-c++ make python3
-      - echo Installing todo API dependencies
-      - cd backend
+      - echo Installing API dependencies
       - rm -rf node_modules package-lock.json
       - npm install --legacy-peer-deps
-      - echo Finished installing todo API dependencies
+      - echo Finished installing API dependencies
+
   build:
     commands:
-      - echo Deploying todo API
+      - echo Deploying API
+      - cd backend
       - serverless deploy
-      - echo Finished deploying todo API
+      - echo Finished deploying API
 
 cache:
   paths:
-    - "backend/node_modules/**/*"
-
-
+    - "node_modules/**/*"
