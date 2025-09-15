@@ -10,19 +10,18 @@ phases:
       - npm install -g serverless || echo "serverless already installed"
       - echo "Installing required build tools"
       - yum install -y gcc gcc-c++ make python3
-      - echo "Entering backend directory"
-      - cd backend
-      - echo "Installing project dependencies"
-      - if [ ! -d "node_modules" ]; then npm install --legacy-peer-deps; fi
-      - echo "Finished installing dependencies"
+      - echo "Installing frontend dependencies"
+      - cd frontend
+      - npm install --legacy-peer-deps
+      - echo "Finished installing frontend dependencies"
 
   build:
     commands:
-      - echo "Deploying API"
-      - cd backend
+      - echo "Deploying backend API"
+      - cd ../backend
       - serverless deploy
-      - echo "Finished deploying API"
+      - echo "Finished deploying backend API"
 
 cache:
   paths:
-    - "backend/node_modules/**/*"
+    - "frontend/node_modules/**/*"
