@@ -3,12 +3,15 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 22
     commands:
       - echo Installing Web dependencies
       - cd frontend
+      # Clean install to avoid eslint conflicts
+      - rm -rf node_modules package-lock.json
       - npm install --silent
       - echo Finished installing Web dependencies
+
   build:
     commands:
       - echo Running Unit Tests
@@ -25,7 +28,7 @@ cache:
     - "frontend/node_modules/**/*"
 
 artifacts:
+  base-directory: frontend/build
   files:
     - "**/*"
-  base-directory: "frontend/build*"
   discard-paths: no

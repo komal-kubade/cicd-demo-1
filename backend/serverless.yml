@@ -2,7 +2,7 @@ service: mybackend-todo
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs22.x
 
 functions:
   listTodos:
