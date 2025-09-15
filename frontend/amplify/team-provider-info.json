@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-madrid-dev-72581-authRole",
+      "UnauthRoleArn": "arn:aws:iam::997241705634:role/amplify-madrid-dev-72581-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::997241705634:role/amplify-madrid-dev-72581-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-madrid-dev-72581-deployment",
+      "UnauthRoleName": "amplify-madrid-dev-72581-unauthRole",
+      "StackName": "amplify-madrid-dev-72581",
+      "StackId": "arn:aws:cloudformation:us-east-1:997241705634:stack/amplify-madrid-dev-72581/1fb91f40-9220-11f0-aee9-120bd6633fd5",
+      "AmplifyAppId": "d1zzl8pcgf3l4q"
+    },
+    "categories": {
+      "hosting": {
+        "S3AndCloudFront": {}
+      }
+    }
+  }
+}
