@@ -3,14 +3,18 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18  
+      nodejs: 18
     commands:
+      - echo Fixing npm version for Node 18
+      - npm install -g npm@9
       - echo Installing serverless
       - npm install -g serverless
+      - echo Installing required build tools
+      - yum install -y gcc gcc-c++ make python3
       - echo Installing todo API dependencies
       - cd backend
       - rm -rf node_modules package-lock.json
-      - npm install --legacy-peer-deps --silent
+      - npm install --legacy-peer-deps
       - echo Finished installing todo API dependencies
   build:
     commands:
@@ -21,4 +25,5 @@ phases:
 cache:
   paths:
     - "backend/node_modules/**/*"
+
 
